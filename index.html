@@ -1,0 +1,142 @@
+<html>
+<head>
+  <title>QDC Task</title>
+  <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: white;
+      background-image: url('https://cdn.dribbble.com/userupload/23760945/file/original-aacbb100bb46306567a6150a8c92235b.gif');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+    .container {
+      width: 300px;
+      margin: 100px auto;
+      background-color: rgba(26,26,26,0.9); /* transparent dark box */
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px red;
+    }
+    h1 {
+      text-align: center;
+      font-family: 'Creepster', cursive;
+      color: red;
+    }
+    .tabs {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+    .tabs button {
+      background: none;
+      border: none;
+      color: gray;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .tabs .active {
+      color: red;
+      border-bottom: 2px solid red;
+    }
+    form {
+      display: none;
+    }
+    form.active {
+      display: block;
+    }
+    label {
+      display: block;
+      margin-top: 8px;
+    }
+    input {
+      width: 95%;
+      padding: 6px;
+      margin-bottom: 6px;
+      background: #222;
+      border: 1px solid #555;
+      color: white;
+    }
+    .show-pass {
+      font-size: 12px;
+      cursor: pointer;
+      color: gray;
+    }
+    .submit {
+      width: 100%;
+      padding: 8px;
+      background: red;
+      color: white;
+      border: none;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+    .submit:hover {
+      background: darkred;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>QDC Portal</h1>
+    <div class="tabs">
+      <button id="loginTab" class="active">Login</button>
+      <button id="signupTab">Sign Up</button>
+    </div>
+
+    <form id="loginForm" class="active">
+      <label>Email</label>
+      <input type="text" placeholder="you@spooky.com">
+      <label>Password</label>
+      <input type="password" id="loginPass">
+      <span class="show-pass" onclick="togglePass('loginPass', this)">Show Password</span>
+      <input type="submit" class="submit" value="Enter">
+    </form>
+
+    <form id="signupForm">
+      <label>Full Name</label>
+      <input type="text" placeholder="Morticia Addams">
+      <label>Email</label>
+      <input type="text" placeholder="you@spooky.com">
+      <label>Password</label>
+      <input type="password" id="signupPass">
+      <span class="show-pass" onclick="togglePass('signupPass', this)">Show Password</span>
+      <input type="submit" class="submit" value="Create Account">
+    </form>
+  </div>
+
+  <script>
+    function togglePass(id, el) {
+      var input = document.getElementById(id);
+      if (input.type === "password") {
+        input.type = "text";
+        el.innerHTML = "Hide Password";
+      } else {
+        input.type = "password";
+        el.innerHTML = "Show Password";
+      }
+    }
+
+    var loginTab = document.getElementById("loginTab");
+    var signupTab = document.getElementById("signupTab");
+    var loginForm = document.getElementById("loginForm");
+    var signupForm = document.getElementById("signupForm");
+
+    loginTab.onclick = function() {
+      loginForm.className = "active";
+      signupForm.className = "";
+      loginTab.className = "active";
+      signupTab.className = "";
+    }
+    signupTab.onclick = function() {
+      signupForm.className = "active";
+      loginForm.className = "";
+      signupTab.className = "active";
+      loginTab.className = "";
+    }
+  </script>
+</body>
+</html>
+
